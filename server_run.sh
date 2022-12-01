@@ -9,10 +9,12 @@
 #         ./gradlew bootRun
 
 # # Eg:- For SpringBoot Project;
-#         ./mvnw spring-boot:run
+         ./mvnw spring-boot:run
 
 # # Eg:- For Python Flask Project
 #         export FLASK_APP=main.py
 #         flask run
 
 # CRIO_SOLUTION_AND_STUB_END_MODULE_BASIC
+
+
