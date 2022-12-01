@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS public.offer_entity
 TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.offer_entity
-    OWNER to postgres;
+    OWNER to admin;
 
 CREATE TABLE IF NOT EXISTS public.pitch_entity
 (
@@ -34,4 +34,4 @@ CREATE TABLE IF NOT EXISTS public.pitch_entity
 TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.pitch_entity
-    OWNER to postgres;
+    OWNER to admin;
