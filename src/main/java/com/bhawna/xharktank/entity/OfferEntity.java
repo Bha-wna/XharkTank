@@ -16,9 +16,9 @@ public class OfferEntity extends AbstractEntity {
     @Column
     private String investor;
     @Column
-    private String amount;
+    private BigDecimal amount;
     @Column
-    private String equity;
+    private BigDecimal equity;
     @Column
     private String comment;
     @Column

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 @Data
@@ -20,11 +21,14 @@ public class PitchEntity extends AbstractEntity {
     @Column
     private String pitchIdea;
     @Column
-    private String askAmount;
+    private BigDecimal askAmount;
     @Column
-    private String equity;
+    private BigDecimal equity;
     @Transient
     private List<OfferEntity> offers;
+
+
+
 
 
 

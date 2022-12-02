@@ -15,7 +15,7 @@ public class PitchRequest {
     @NonNull
     String pitchIdea;
     @NonNull
-    String askAmount;
+    BigDecimal askAmount;
     @NonNull
-    String equity;
+    BigDecimal equity;
 }
