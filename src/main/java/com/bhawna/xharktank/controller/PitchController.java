@@ -8,6 +8,7 @@ import com.bhawna.xharktank.repository.OfferRepository;
 import com.bhawna.xharktank.repository.PitchRepository;
 import com.bhawna.xharktank.service.OfferService;
 import com.bhawna.xharktank.service.PitchService;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -66,7 +67,7 @@ public class PitchController {
     }
 
     @PostMapping("{pitch_id}/makeOffer")
-    public ResponseEntity makeOffer(@PathVariable String pitch_id, @RequestBody @Validated OfferRequest offerRequest)
+    public ResponseEntity makeOffer(@PathVariable @NonNull String pitch_id, @RequestBody @Validated OfferRequest offerRequest)
     {
         Optional<PitchEntity> optionalPitchEntity = pitchService.getPitchById(Long.valueOf(pitch_id));
         if(optionalPitchEntity.isEmpty())
