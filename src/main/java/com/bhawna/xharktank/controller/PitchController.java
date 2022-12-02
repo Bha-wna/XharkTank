@@ -67,8 +67,11 @@ public class PitchController {
     }
 
     @PostMapping("{pitch_id}/makeOffer")
-    public ResponseEntity makeOffer(@PathVariable @NonNull String pitch_id, @RequestBody @Validated OfferRequest offerRequest)
+    public ResponseEntity makeOffer(@PathVariable String pitch_id, @RequestBody @Validated OfferRequest offerRequest)
     {
+        if(pitch_id.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         Optional<PitchEntity> optionalPitchEntity = pitchService.getPitchById(Long.valueOf(pitch_id));
         if(optionalPitchEntity.isEmpty())
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
