@@ -2,6 +2,7 @@ package com.bhawna.xharktank.controller;
 
 import com.bhawna.xharktank.Domain.OfferRequest;
 import com.bhawna.xharktank.Domain.PitchRequest;
+import com.bhawna.xharktank.Domain.PitchResponse;
 import com.bhawna.xharktank.entity.OfferEntity;
 import com.bhawna.xharktank.entity.PitchEntity;
 import com.bhawna.xharktank.repository.OfferRepository;
@@ -39,12 +40,12 @@ public class PitchController {
 
     @GetMapping
     public ResponseEntity getAllPitch(){
-        List<PitchEntity> pitchEntities = pitchService.getAllPitch();
-        for(PitchEntity it: pitchEntities){
+        List<PitchResponse> pitchResponses = pitchService.getAllPitch();
+        for(PitchResponse it: pitchResponses){
             List<OfferEntity> offerEntities = offerService.getOfferByPitchId(String.valueOf(it.getId()));
             it.setOffers(offerEntities);
         }
-        return new ResponseEntity<>(pitchEntities, HttpStatus.OK);
+        return new ResponseEntity<>(pitchResponses, HttpStatus.OK);
     }
 
     @GetMapping("{pitch_id}")
@@ -61,7 +62,7 @@ public class PitchController {
     @PostMapping
     public ResponseEntity addPitch(@RequestBody @Validated PitchRequest pitchRequest)
     {
-        if(pitchRequest.getEquity().intValue() < 0 || pitchRequest.getEquity().intValue() > 100 || pitchRequest.getAskAmount().intValue() < 0)
+        if(pitchRequest.getEquity().intValue() < 0 || pitchRequest.getEquity().intValue() > 100 || Double.valueOf(pitchRequest.getAskAmount()) < 0)
 
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         Map<String, String> response = pitchService.addPitch(pitchRequest);

@@ -21,7 +21,7 @@ public class PitchEntity extends AbstractEntity {
     @Column
     private String pitchIdea;
     @Column
-    private BigDecimal askAmount;
+    private String askAmount;
     @Column
     private BigDecimal equity;
     @Transient
