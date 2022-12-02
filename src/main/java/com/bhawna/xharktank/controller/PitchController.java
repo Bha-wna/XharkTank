@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 @RestController
@@ -60,7 +61,8 @@ public class PitchController {
     @PostMapping
     public ResponseEntity addPitch(@RequestBody @Validated PitchRequest pitchRequest)
     {
-        if(pitchRequest.getEquity().intValue() < 0 || pitchRequest.getEquity().intValue() > 100 || pitchRequest.getAskAmount().intValue() < 0)
+        if(Double.valueOf(pitchRequest.getEquity()) < 0 || Double.valueOf(pitchRequest.getEquity()) > 100 || Double.valueOf(pitchRequest.getAskAmount()) < 0)
+
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         Map<String, String> response = pitchService.addPitch(pitchRequest);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -80,7 +82,7 @@ public class PitchController {
         }
         if(optionalPitchEntity.isEmpty())
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        if(offerRequest.getEquity().intValue() < 0 || offerRequest.getEquity().intValue() > 100 || offerRequest.getAmount().intValue() < 0)
+        if(Double.valueOf(offerRequest.getEquity()) < 0 || Double.valueOf(offerRequest.getEquity()) > 100 || Double.valueOf(offerRequest.getAmount()) < 0)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         Map<String, String> response = offerService.addOffer(offerRequest, pitch_id);
         return new ResponseEntity<>(response, HttpStatus.CREATED);

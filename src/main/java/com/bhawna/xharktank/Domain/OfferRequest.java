@@ -10,10 +10,10 @@ public class OfferRequest {
     @NonNull
     String investor;
     @NonNull
-    BigDecimal amount;
+    String amount;
     @NonNull
 
-    BigDecimal equity;
+    String equity;
     @NonNull
     String comment;
 }
