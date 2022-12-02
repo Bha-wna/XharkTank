@@ -1,6 +1,6 @@
 package com.bhawna.xharktank.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;

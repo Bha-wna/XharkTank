@@ -12,7 +12,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="bhawna29pragya-ME_BUILDOUT_XHARKTANK" target="17" />
+      <module name="bhawna29pragya-ME_BUILDOUT_XHARKTANK" target="11" />
       <module name="xharktank" target="17" />
     </bytecodeTargetLevel>
   </component>
