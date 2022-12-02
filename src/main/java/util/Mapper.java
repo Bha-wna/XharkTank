@@ -12,7 +12,7 @@ public class Mapper {
             PitchResponse<BigInteger, BigDecimal> response = new PitchResponse<>();
             response.setEntrepreneur(pitchEntity.getEntrepreneur());
             response.setPitchTitle(pitchEntity.getPitchTitle());
-            response.setId(pitchEntity.getId());
+            response.setId(String.valueOf(pitchEntity.getId()));
             response.setPitchIdea(pitchEntity.getPitchIdea());
             response.setOffers(pitchEntity.getOffers());
             response.setAskAmount(new BigInteger(pitchEntity.getAskAmount()));
@@ -22,7 +22,7 @@ public class Mapper {
         PitchResponse<BigDecimal,BigDecimal> response = new PitchResponse<>();
         response.setEntrepreneur(pitchEntity.getEntrepreneur());
         response.setPitchTitle(pitchEntity.getPitchTitle());
-        response.setId(pitchEntity.getId());
+        response.setId(String.valueOf(pitchEntity.getId()));
         response.setPitchIdea(pitchEntity.getPitchIdea());
         response.setOffers(pitchEntity.getOffers());
         response.setAskAmount(new BigDecimal(pitchEntity.getAskAmount()));
