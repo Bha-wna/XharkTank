@@ -72,7 +72,12 @@ public class PitchController {
         if(pitch_id.isEmpty()){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        Optional<PitchEntity> optionalPitchEntity = pitchService.getPitchById(Long.valueOf(pitch_id));
+        Optional<PitchEntity> optionalPitchEntity;
+        try {
+            optionalPitchEntity = pitchService.getPitchById(Long.valueOf(pitch_id));
+        } catch (NumberFormatException nfe){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         if(optionalPitchEntity.isEmpty())
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         if(offerRequest.getEquity().intValue() < 0 || offerRequest.getEquity().intValue() > 100 || offerRequest.getAmount().intValue() < 0)
