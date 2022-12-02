@@ -59,7 +59,7 @@ public class PitchController {
     @PostMapping
     public ResponseEntity addPitch(@RequestBody @Validated PitchRequest pitchRequest)
     {
-        if(pitchRequest.getEquity().intValue() < 0 || pitchRequest.getAskAmount().intValue() < 0)
+        if(pitchRequest.getEquity().intValue() < 0 || pitchRequest.getEquity().intValue() > 100 || pitchRequest.getAskAmount().intValue() < 0)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         Map<String, String> response = pitchService.addPitch(pitchRequest);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -71,7 +71,7 @@ public class PitchController {
         Optional<PitchEntity> optionalPitchEntity = pitchService.getPitchById(Long.valueOf(pitch_id));
         if(optionalPitchEntity.isEmpty())
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        if(offerRequest.getEquity().intValue() < 0 || offerRequest.getAmount().intValue() < 0)
+        if(offerRequest.getEquity().intValue() < 0 || offerRequest.getEquity().intValue() > 100 || offerRequest.getAmount().intValue() < 0)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         Map<String, String> response = offerService.addOffer(offerRequest, pitch_id);
         return new ResponseEntity<>(response, HttpStatus.CREATED);

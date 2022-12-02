@@ -12,6 +12,7 @@ public class OfferRequest {
     @NonNull
     BigDecimal amount;
     @NonNull
+
     BigDecimal equity;
     @NonNull
     String comment;
