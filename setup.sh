@@ -10,8 +10,8 @@
 #           ./gradlew build
 
 # # Eg:- For Java Maven Project:
- 	        chmod +x Xharktank/mvnw
- 	        ./Xharktank/mvnw clean install compile test
+ 	        chmod +x mvnw
+ 	        ./mvnw clean install compile test
 
 # # Eg:- For Python Project;
 #           pip install -r requirements.txt

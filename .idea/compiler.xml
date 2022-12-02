@@ -8,14 +8,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="xharktank" />
+        <module name="bhawna29pragya-ME_BUILDOUT_XHARKTANK" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="bhawna29pragya-ME_BUILDOUT_XHARKTANK" target="17" />
       <module name="xharktank" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="bhawna29pragya-ME_BUILDOUT_XHARKTANK" options="-parameters" />
       <module name="xharktank" options="-parameters" />
     </option>
   </component>
