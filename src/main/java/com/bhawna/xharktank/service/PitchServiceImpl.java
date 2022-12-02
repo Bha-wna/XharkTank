@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import util.Mapper;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -41,27 +42,7 @@ public class PitchServiceImpl implements PitchService{
     @Override
     public List<PitchResponse> getAllPitch() {
         return pitchrepository.findAll(Sort.by(Sort.Direction.DESC, "id")).stream().map(pitchEntity -> {
-
-            if(!pitchEntity.getAskAmount().contains(".")){
-                PitchResponse<BigInteger,BigDecimal> response = new PitchResponse<>();
-                response.setEntrepreneur(pitchEntity.getEntrepreneur());
-                response.setPitchTitle(pitchEntity.getPitchTitle());
-                response.setId(pitchEntity.getId());
-                response.setPitchIdea(pitchEntity.getPitchIdea());
-                response.setOffers(pitchEntity.getOffers());
-                response.setAskAmount(new BigInteger(pitchEntity.getAskAmount()));
-                response.setEquity(pitchEntity.getEquity());
-                return  response;
-            }
-            PitchResponse<BigDecimal,BigDecimal> response = new PitchResponse<>();
-            response.setEntrepreneur(pitchEntity.getEntrepreneur());
-            response.setPitchTitle(pitchEntity.getPitchTitle());
-            response.setId(pitchEntity.getId());
-            response.setPitchIdea(pitchEntity.getPitchIdea());
-            response.setOffers(pitchEntity.getOffers());
-            response.setAskAmount(new BigDecimal(pitchEntity.getAskAmount()));
-            response.setEquity(pitchEntity.getEquity());
-            return response;
+            return Mapper.mapResponse(pitchEntity);
         }).collect(Collectors.toList());
     }
 

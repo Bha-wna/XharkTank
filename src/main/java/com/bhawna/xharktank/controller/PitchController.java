@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import util.Mapper;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -54,10 +55,10 @@ public class PitchController {
         if(optionalPitchEntity.isEmpty())
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         PitchEntity pitchEntity = optionalPitchEntity.get();
+        PitchResponse pitchResponse = Mapper.mapResponse(pitchEntity);
         List<OfferEntity> offerEntities = offerService.getOfferByPitchId(pitch_id);
-        pitchEntity.setOffers(offerEntities);
-        pitchrepository.save(pitchEntity);
-        return new ResponseEntity<>(pitchEntity, HttpStatus.OK);
+        pitchResponse.setOffers(offerEntities);
+        return new ResponseEntity<>(pitchResponse, HttpStatus.OK);
     }
     @PostMapping
     public ResponseEntity addPitch(@RequestBody @Validated PitchRequest pitchRequest)
