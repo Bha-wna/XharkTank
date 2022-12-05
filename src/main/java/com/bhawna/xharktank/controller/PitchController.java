@@ -38,7 +38,6 @@ public class PitchController {
         this.offerRepository = offerRepository;
     }
 
-
     @GetMapping
     public ResponseEntity getAllPitch(){
         List<PitchResponse> pitchResponses = pitchService.getAllPitch();
@@ -89,6 +88,5 @@ public class PitchController {
         Map<String, String> response = offerService.addOffer(offerRequest, pitch_id);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
-
 }
 
